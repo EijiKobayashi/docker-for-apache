@@ -3,27 +3,23 @@ FROM php:7.2-apache
 COPY ./php.ini /usr/local/etc/php/
 
 RUN apt-get update \
-  && apt-get -y install vim wget default-mysql-client zlib1g-dev \
-  && docker-php-ext-install pdo_mysql mysqli zip
-
-RUN apt-get update && apt-get install -y \
-  libfreetype6-dev \
-  libjpeg62-turbo-dev \
-  libpng-dev
-
-RUN apt-get update \
   && apt-get install -y \
   gcc \
   make \
-  libpng-dev \
   git \
   unzip \
   vim \
+  wget \
+  default-mysql-client \
+  zlib1g-dev \
   libmcrypt-dev \
   curl \
   gnupg \
-  libjpeg-dev \
   libfreetype6-dev \
+  libjpeg62-turbo-dev \
+  libpng-dev \
+  libjpeg-dev \
+  && docker-php-ext-install pdo_mysql mysqli zip \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
   && docker-php-ext-install -j$(nproc) gd
 
