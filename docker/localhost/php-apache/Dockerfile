@@ -20,7 +20,6 @@ RUN apt-get update && apt-get install -y \
   openssl \
   libpng-dev \
   gnupg \
-  libjpeg-dev \
   libfreetype6-dev \
   libjpeg62-turbo-dev \
   libmagickwand-dev \
